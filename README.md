@@ -3,7 +3,7 @@
 <br>
 
 ### B A C K G R O U N D
-Rockbuster is a global movie rental company that previously had physical locations. In the face of streaming services like Netflix and Amazon Prime, Rockbuster has launched an online video rental service to stay competitive. 
+Rockbuster is a fictitious global movie rental company that previously had physical locations. In the face of streaming services like Netflix and Amazon Prime, Rockbuster has launched an online video rental service to stay competitive. 
 
 <br>
 

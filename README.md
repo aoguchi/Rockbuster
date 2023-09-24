@@ -13,7 +13,7 @@ Rockbuster has requested a performance analysis and data-driven insights for the
 <br>
 
 ### D A T A B A S E 
-The relational database utilized for this analysis was fabricated by Career Foundry for educational purposes. The database was constructed of 15 tables (ie payment, rental, film_catgory, inventory, store, etc). An Entity Relationship Diagram was created using DbVisualizer, as well as a data dictionary with primary and foreign keys specified. These can be found under files "
+The relational database utilized for this analysis was fabricated by Career Foundry for educational purposes. The database is constructed of 15 tables (ie payment, rental, film_catgory, inventory, store). An Entity Relationship Diagram was created using DbVisualizer. Data dictionary was compiled with primary and foreign keys specified. These can be found under files.
 
 <br>
 

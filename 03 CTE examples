@@ -10,11 +10,11 @@ WITH total_amount_paid (customer_id, first_name, last_name, total_amount, city, 
 	  E.country
   FROM payment A
   INNER JOIN customer B	ON A.customer_id =	B.customer_id
-  INNER JOIN address C	ON B.address_id =		C.address_id
-  INNER JOIN city D		ON C.city_id =		D.city_id
-  INNER JOIN country E	ON D.country_id =		E.country_id
+  INNER JOIN address C	ON B.address_id =	C.address_id
+  INNER JOIN city D	ON C.city_id =		D.city_id
+  INNER JOIN country E	ON D.country_id =	E.country_id
   WHERE city IN (
-  	'Aurora',
+  	  'Aurora',
 	  'Acua',
 	  'Citrus Heights',
 	  'Iwaki',
@@ -26,10 +26,11 @@ WITH total_amount_paid (customer_id, first_name, last_name, total_amount, city, 
 	  'Cianjur'
 	  )
   GROUP BY 
-  	D.city,
+  	  D.city,
 	  E.country,
 	  B.customer_id
-  ORDER BY total_amount desc
+  ORDER BY 
+	  total_amount desc
   LIMIT 5)
 
 SELECT 
@@ -42,28 +43,28 @@ FROM
 
 WITH top_5_customers (customer_id, first_name, last_name, total_amount, city, country) AS
  (SELECT
-		B.customer_id,
+	B.customer_id,
   	B.first_name,
   	B.last_name,
-	  SUM(A.amount) AS total_amount,
-	  D.city,
-	  E.country
+	SUM(A.amount) AS total_amount,
+	D.city,
+	E.country
   FROM payment A
   INNER JOIN customer B	ON A.customer_id =	B.customer_id
-  INNER JOIN address C	ON B.address_id =		C.address_id
-  INNER JOIN city D		  ON C.city_id =		  D.city_id
-  INNER JOIN country E	ON D.country_id =		E.country_id
+  INNER JOIN address C	ON B.address_id =	C.address_id
+  INNER JOIN city D	ON C.city_id =		D.city_id
+  INNER JOIN country E	ON D.country_id =	E.country_id
   WHERE city IN (
-	  'Aurora',
-	  'Acua',
-	  'Citrus Heights',
-	  'Iwaki',
-	  'Ambattur',
-	  'Shanwei',
-	  'So Leopoldo',
-	  'Teboksary',
-	  'Tianjin',
-	  'Cianjur'
+	'Aurora',
+	'Acua',
+	'Citrus Heights',
+	'Iwaki',
+	'Ambattur',
+	'Shanwei',
+	'So Leopoldo',
+	'Teboksary',
+	'Tianjin',
+	'Cianjur'
 	  )
   GROUP BY 
   	D.city,
@@ -78,7 +79,7 @@ SELECT
 	COUNT(top_5_customers) AS top_customer_count
 FROM customer A
 INNER JOIN address B 	ON A.address_id = B.address_id
-INNER JOIN city C 		ON B.city_id = 	  C.city_id
+INNER JOIN city C 	ON B.city_id = 	  C.city_id
 INNER JOIN country D 	ON C.country_id = D.country_id
 LEFT JOIN top_5_customers
 ON A.customer_id = top_5_customers.customer_id

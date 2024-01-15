@@ -1,4 +1,5 @@
-# Rockbuster Performance Analysis: SQL | Excel | Tableau | Adobe Illustrator 
+# Rockbuster Performance Analysis: 
+SQL | Excel | Tableau | Adobe Illustrator 
 
 <br>
 

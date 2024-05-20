@@ -32,7 +32,7 @@ SELECT DISTINCT country
 FROM payment A
 LEFT JOIN customer B 	ON A.customer_id = 	B.customer_id
 RIGHT JOIN address C	ON B.address_id = 	C.address_id
-LEFT JOIN city D		ON C.city_id = 		D.city_id
+LEFT JOIN city D	ON C.city_id = 		D.city_id
 LEFT JOIN country E	ON D.country_id = 	E.country_id
 ORDER BY 1
 
@@ -48,7 +48,7 @@ SELECT
 FROM payment A
 INNER JOIN customer B 	ON A.customer_id = 	B.customer_id
 INNER JOIN address C	ON B.address_id = 	C.address_id
-INNER JOIN city D		ON C.city_id = 		D.city_id
+INNER JOIN city D	ON C.city_id = 		D.city_id
 INNER JOIN country E	ON D.country_id = 	E.country_id
 GROUP BY 
 	E.country
@@ -61,7 +61,7 @@ SELECT
 FROM payment A
 LEFT JOIN customer B 	ON A.customer_id = 	B.customer_id
 RIGHT JOIN address C	ON B.address_id = 	C.address_id
-LEFT JOIN city D		ON C.city_id = 		D.city_id
+LEFT JOIN city D	ON C.city_id = 		D.city_id
 LEFT JOIN country E	ON D.country_id = 	E.country_id
 GROUP BY country
 ORDER BY sum desc
@@ -75,7 +75,7 @@ SELECT
 FROM payment A
 LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 GROUP BY 
 	title, 
 	description,
@@ -92,7 +92,7 @@ SELECT
 FROM payment A
 LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 GROUP BY 
 	title, 
 	description,
@@ -110,11 +110,11 @@ SELECT
 	MAX(D.rental_duration) AS min_rental_duration,
 	ROUND(AVG(D.rental_duration),0) AS avg_rental_duration
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
-LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
+LEFT JOIN rental B 		ON A.rental_id = 	B.rental_id
+LEFT JOIN inventory C 		ON B.inventory_id = 	C.inventory_id
 LEFT JOIN film D		ON C.film_id = 		D.film_id
 LEFT JOIN film_category E	ON D.film_id = 		E.film_id
-LEFT JOIN category F	ON E.category_id = 	F.category_id
+LEFT JOIN category F		ON E.category_id = 	F.category_id
 GROUP BY 
 	F.name
 ORDER BY 2 desc
@@ -128,7 +128,7 @@ SELECT
 	D.city,
 	E.country
 FROM payment A
-INNER JOIN customer B ON A.customer_id = B.customer_id
+INNER JOIN customer B 	ON A.customer_id = 	B.customer_id
 INNER JOIN address C 	ON B.address_id = 	C.address_id
 INNER JOIN city D 	ON C.city_id = 		D.city_id
 INNER JOIN country E 	ON D.country_id = 	E.country_id
@@ -158,15 +158,15 @@ GROUP BY
 -- payment.staff_id = store_id
 SELECT *
 FROM payment A
-LEFT JOIN staff B 		ON A.staff_id = 	B.staff_id
+LEFT JOIN staff B 	ON A.staff_id = 	B.staff_id
 LEFT JOIN store C 	ON B.store_id = 	C.store_id
 
 -- what languages are rented by region? (English is the ONLY language rented)
 SELECT *
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 LEFT JOIN language E	ON D.language_id = 	E.language_id
 ORDER BY name 
 
@@ -181,7 +181,7 @@ FROM
 	FROM payment A
 	LEFT JOIN customer B 	ON A.customer_id = 	B.customer_id
 	RIGHT JOIN address C	ON B.address_id = 	C.address_id
-	LEFT JOIN city D		ON C.city_id = 		D.city_id
+	LEFT JOIN city D	ON C.city_id = 		D.city_id
 	LEFT JOIN country E	ON D.country_id = 	E.country_id
 	ORDER BY store_id desc) AS regional_stores
 GROUP BY store_id
@@ -268,9 +268,9 @@ SELECT
 	MAX(rental_duration) AS min_rental_duration,
 	AVG(rental_duration) AS avg_rental_duration
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 LEFT JOIN language E	ON D.language_id = 	E.language_id
 GROUP BY 1
 ORDER BY 1
@@ -282,9 +282,9 @@ SELECT
 	rating,
 	SUM(A.amount) AS sum_amount
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 WHERE A.staff_id = 1
 GROUP BY 
 	title, 
@@ -300,9 +300,9 @@ SELECT
 	rating,
 	SUM(A.amount) AS sum_amount
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 WHERE A.staff_id = 2
 GROUP BY 
 	title, 
@@ -318,9 +318,9 @@ SELECT
 	rating,
 	SUM(A.amount) AS sum_amount
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 WHERE A.staff_id = 1
 GROUP BY 
 	title, 
@@ -336,9 +336,9 @@ SELECT
 	rating,
 	SUM(A.amount) AS sum_amount
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 WHERE A.staff_id = 2
 GROUP BY 
 	title, 
@@ -354,7 +354,7 @@ SELECT
 FROM payment A
 LEFT JOIN customer B 	ON A.customer_id = 	B.customer_id
 RIGHT JOIN address C	ON B.address_id = 	C.address_id
-LEFT JOIN city D		ON C.city_id = 		D.city_id
+LEFT JOIN city D	ON C.city_id = 		D.city_id
 LEFT JOIN country E	ON D.country_id = 	E.country_id
 ORDER BY store_id desc
 
@@ -371,9 +371,9 @@ SELECT
 	rating,
 	COUNT(rating) AS count_of_rating
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 LEFT JOIN language E	ON D.language_id = 	E.language_id
 GROUP BY 1
 ORDER BY 2 desc;
@@ -383,10 +383,10 @@ SELECT
 	COUNT(distinct D.film_id) AS number_of_films,
 	COUNT(distinct C.inventory_id) AS inventory
 FROM payment A
-LEFT JOIN rental B 		ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 		ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 		ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D			ON C.film_id = 		D.film_id
-LEFT JOIN film_category E		ON D.film_id = 		E.film_id
+LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film_category E	ON D.film_id = 		E.film_id
 LEFT JOIN category F		ON E.category_id = 	F.category_id
 GROUP BY 
 	F.name
@@ -397,10 +397,10 @@ SELECT
 	F.name,
 	SUM(A.amount) AS sum_amount
 FROM payment A
-LEFT JOIN rental B 		ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 		ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 		ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D			ON C.film_id = 		D.film_id
-LEFT JOIN film_category E		ON D.film_id = 		E.film_id
+LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film_category E	ON D.film_id = 		E.film_id
 LEFT JOIN category F		ON E.category_id = 	F.category_id
 GROUP BY 
 	F.name
@@ -411,10 +411,10 @@ SELECT
 	F.name,
 	COUNT(distinct C.inventory_id) AS inventory
 FROM payment A
-LEFT JOIN rental B 		ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 		ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C		ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D			ON C.film_id = 		D.film_id
-LEFT JOIN film_category E		ON D.film_id = 		E.film_id
+LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film_category E	ON D.film_id = 		E.film_id
 LEFT JOIN category F		ON E.category_id = 	F.category_id
 GROUP BY 
 	F.name
@@ -426,9 +426,9 @@ SELECT
 	MAX(rental_duration) AS min_rental_duration,
 	AVG(rental_duration) AS avg_rental_duration
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 LEFT JOIN language E	ON D.language_id = 	E.language_id
 GROUP BY 1
 ORDER BY 1
@@ -438,10 +438,10 @@ SELECT
 	A.staff_id,
 	rating,
 	COUNT(rating) AS count_of_rating
-FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+FROM payment 
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 LEFT JOIN language E	ON D.language_id = 	E.language_id
 WHERE A.staff_id = 1
 GROUP BY 1, 2
@@ -453,9 +453,9 @@ SELECT
 	rating,
 	COUNT(rating) AS count_of_rating
 FROM payment A
-LEFT JOIN rental B 	ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 	ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film D	ON C.film_id = 		D.film_id
 LEFT JOIN language E	ON D.language_id = 	E.language_id
 WHERE A.staff_id = 2
 GROUP BY 1, 2
@@ -475,11 +475,11 @@ SELECT
 	MAX(D.rental_duration) AS min_rental_duration,
 	ROUND(AVG(D.rental_duration),0) AS avg_rental_duration
 FROM payment A
-LEFT JOIN rental B	ON A.rental_id = 		B.rental_id
-LEFT JOIN inventory C 	ON B.inventory_id = 	C.inventory_id
+LEFT JOIN rental B		ON A.rental_id = 	B.rental_id
+LEFT JOIN inventory C 		ON B.inventory_id = 	C.inventory_id
 LEFT JOIN film D		ON C.film_id = 		D.film_id
 LEFT JOIN film_category E	ON D.film_id = 		E.film_id
-LEFT JOIN category F	ON E.category_id = 	F.category_id
+LEFT JOIN category F		ON E.category_id = 	F.category_id
 WHERE A.staff_id = 1
 GROUP BY 
 	F.name
@@ -495,10 +495,10 @@ SELECT
 	MAX(D.rental_duration) AS min_rental_duration,
 	ROUND(AVG(D.rental_duration),0) AS avg_rental_duration
 FROM payment A
-LEFT JOIN rental B 		ON A.rental_id = 		B.rental_id
+LEFT JOIN rental B 		ON A.rental_id = 	B.rental_id
 LEFT JOIN inventory C 		ON B.inventory_id = 	C.inventory_id
-LEFT JOIN film D			ON C.film_id = 		D.film_id
-LEFT JOIN film_category E		ON D.film_id = 		E.film_id
+LEFT JOIN film D		ON C.film_id = 		D.film_id
+LEFT JOIN film_category E	ON D.film_id = 		E.film_id
 LEFT JOIN category F		ON E.category_id = 	F.category_id
 WHERE A.staff_id = 2
 GROUP BY 
@@ -511,7 +511,7 @@ SELECT
 	name
 FROM film D
 LEFT JOIN film_category E	ON D.film_id = 		E.film_id
-LEFT JOIN category F	ON E.category_id = 	F.category_id
+LEFT JOIN category F		ON E.category_id = 	F.category_id
 ORDER BY rating, name
 
 -- number of transactions per rental rate
